@@ -1,0 +1,5 @@
+2 Ways
+
+EntityManger - we have manually setup
+
+JpaRepository - internally communicates to EntityManger
