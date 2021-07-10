@@ -9,9 +9,10 @@ public class Book {
     @Id
     @GeneratedValue
     private Long id;
+
     private String bookName;
 
-    @JsonIgnore
+    @JsonIgnore//when fetching books do not show students
     @ManyToOne(fetch = FetchType.LAZY)
     private Student student;
 

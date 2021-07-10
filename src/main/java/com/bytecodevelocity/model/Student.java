@@ -3,20 +3,24 @@ package com.bytecodevelocity.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity//converting the class to an entity
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @Column(name = "student_name")
     private String studentName;
     private int age;
+
     @OneToMany(mappedBy = "student")
     List<Book> allBooks;
 
     public Student() {
     }
 
+    //constructor
     public Student(String studentName, int age) {
         this.studentName = studentName;
         this.age = age;

@@ -8,8 +8,9 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Repository
-@Transactional
+@Transactional//since the class is comunicating with the database
 public class StudentDao {
+
     @PersistenceContext
     EntityManager em;
 

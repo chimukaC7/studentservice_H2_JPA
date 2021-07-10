@@ -15,8 +15,10 @@ public class StudentController {
 
     @Autowired
     StudentDao dao;
+
     @Autowired
     StudentRepository repo;
+
     @PostMapping("saveStudent")
     public void saveStudent(@RequestBody Student student){
         dao.insertStudent(student);
@@ -27,23 +29,30 @@ public class StudentController {
         repo.save(student);
     }
 
-    @GetMapping("allStudent")
+    @GetMapping("students")
     public List<Student> getAllStudent(){
         return repo.findAll();
     }
 
-    @GetMapping("getStudentById/{id}")
+    @GetMapping("students/{id}")
+    //@GetMapping("getStudentById/{id}")
     public Student getAllStudent(@PathVariable long id){
         Optional<Student> byId = repo.findById(id);
         return byId.get();
     }
-    @GetMapping("getBooksById/{id}")
-    public List<Book> getBooksById(@PathVariable Long id){
-        Student byId = repo.getById(id);
-        return byId.getAllBooks();
-    }
-    @GetMapping("getAllBooks")
+
+
+    @GetMapping("books")
     public List<Student> getAllBooks(){
         return repo.findAll();
     }
+
+    @GetMapping("students/{id}/books")
+    //@GetMapping("getBooksById/{id}")
+    public List<Book> getBooksByStudentId(@PathVariable Long id){
+        //get all books for a particular student
+        Student byId = repo.getById(id);
+        return byId.getAllBooks();
+    }
+
 }
